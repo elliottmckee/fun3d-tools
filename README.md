@@ -11,7 +11,7 @@ All the tools here aim to be simple, minimal, general, and straightforward.
 ## nml I/O
 FUN3D nml files are effectively just nested dictionaries, lets treat them as such.
 
-This allows you to very simply read in "template" .nml files and write out a modified/"rendered" .nml files. Whatever you have to do between those two points is up to you.
+This allows you to very simply read in "template" .nml files and write out modified/"rendered" .nml files. Whatever you have to do between those two points is up to you.
 
 You can also make fun3d .nml's from scratch using this, but this seems circuitous. 
 
