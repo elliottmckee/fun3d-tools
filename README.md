@@ -20,7 +20,7 @@ You can also make fun3d .nml's from scratch using this, but this seems circuitou
 - [example_advanced.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_advanced.py)
 
 ### demo ([example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py))
-```
+```python
 # read in template file
 nml_dict = nml_read('resource/fun3d_test.nml')
 
