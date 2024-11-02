@@ -1,0 +1,115 @@
+&project
+	project_rootname                         = 'fun3d_test_nml'
+/
+
+&raw_grid
+	grid_format                              = 'aflr3'
+	data_format                              = 'ascii'
+/
+
+&force moment integ properties
+	area_reference                           = 1.0000
+	x_moment_length                          = 1.0000
+	y_moment_length                          = 1.0000
+	x_moment_center                          = 0.0000e+00
+	y_moment_center                          = 0.0000e+00
+	z_moment_center                          = 0.0000e+00
+/
+
+&reference_physical_properties
+	mach_number                              = 2.0375
+	reynolds_number                          = 3.6055e+07
+	angle_of_attack                          = 0
+	angle_of_yaw                             = 0
+	temperature                              = 267.5863
+	temperature_units                        = 'Kelvin'
+/
+
+&boundary_conditions
+	wall_temperature(:)                    = 1.1211334254323415
+	wall_temp_flag(:)                      = .true.
+/
+
+&code_run_control
+	restart_read                             = 'off'
+	steps                                    = 5000
+	restart_write_freq                       = 1000
+	stopping_tolerance                       = 1.0000e-14
+/
+
+&nonlinear_solver_parameters
+	time_accuracy                            = 'steady'
+	schedule_iteration(1:2)                  = 1, 5000
+	schedule_cfl(1:2)                        = 0.5, 5.0
+	schedule_cflturb(1:2)                    = 0.2, 1.0
+	f_allow_minimum_m                        = 0.0100
+/
+
+&governing_equations
+	eqn_type                                 = 'compressible'
+	viscous_terms                            = 'laminar'
+/
+
+&turbulent_diffusion_models
+	turbulence_model                         = 'sst'
+/
+
+&inviscid_flux_method
+	flux_construction                        = 'ldfss'
+	flux_limiter                             = 'hvanleer'
+/
+
+&global
+	boundary_animation_freq                  = 1000
+	volume_animation_freq                    = 1000
+/
+
+&boundary_output_variables
+	number_of_boundaries                     = -1
+	boundary_list                            = '1'
+	primitive_variables                      = .true.
+	temperature                              = .true.
+	cp                                       = .true.
+	yplus                                    = .true.
+	cq                                       = .true.
+	heating                                  = .true.
+	skinfr                                   = .true.
+	cf_x                                     = .true.
+	cf_y                                     = .true.
+	cf_z                                     = .true.
+/
+
+&volume_output_variables
+	export_to                                = 'vtk'
+	primitive_variables                      = .true.
+	mach                                     = .true.
+	temperature                              = .true.
+	vort_mag                                 = .true.
+	q_criterion                              = .true.
+	residuals                                = .true.
+	ptot                                     = .true.
+	htot                                     = .true.
+	ttot                                     = .true.
+	turb_ke                                  = .true.
+	turb_diss                                = .true.
+	shock_sensor                             = .true.
+/
+
+&sampling_output_variables
+	primitive_variables                      = .true.
+	mach                                     = .true.
+	temperature                              = .true.
+	vort_mag                                 = .true.
+	q_criterion                              = .true.
+	residuals                                = .true.
+	ptot                                     = .true.
+	htot                                     = .true.
+	ttot                                     = .true.
+	turb_ke                                  = .true.
+	turb_diss                                = .true.
+	shock_sensor                             = .true.
+/
+
+&special_parameters
+	large_angle_fix                          = 'off'
+/
