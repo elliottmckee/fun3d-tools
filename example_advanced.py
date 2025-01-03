@@ -7,7 +7,7 @@ import os
 import copy
 import json
 
-from nml_io import nml_write, nml_read
+from src.nml_io import nml_write, nml_read
 
 
 TEMPLATE_RUN_FILE = '''
@@ -50,9 +50,9 @@ if __name__ == '__main__':
     # Traj specific data (outer loop, these all must have same length)
     outerloop_dict = {  'reference_physical_properties': {  'mach_number':              [0.3,           0.9,        1.5],
                                                             'reynolds_number':          [22447372,      52447372,   82447372]},
-                        'nonlinear_solver_parameters': {    'schedule_iteration(1:2)':  [[1, 10000],    [1, 10000], [1, 10000]],
-                                                            'schedule_cfl(1:2)':        [[1, 30],       [1, 20],    [1, 10]],
-                                                            'schedule_cflturb(1:2)':    [[.1, 3],       [.1, 2],    [.1, 1]]}
+                        'nonlinear_solver_parameters': {    'schedule_iteration':       [[1, 10000],    [1, 10000], [1, 10000]],
+                                                            'schedule_cfl':             [[1, 30],       [1, 20],    [1, 10]],
+                                                            'schedule_cflturb':         [[.1, 3.0],       [.1, 2.0],    [.1, 1.0]]}
                     }
 
     # AoA, Aos to run (inner loop)
@@ -78,7 +78,7 @@ if __name__ == '__main__':
                     nml_data_curr[section][prop] = outerloop_dict[section][prop][traj_idx]
 
             # write nml
-            nml_write(nml_data_curr, os.path.join(case_dir, 'fun3d.nml'))
+            nml_write(nml_data_curr, os.path.join(case_dir, 'fun3d.nml'), overwrite=True)
 
             # write run script
             with open(os.path.join(case_dir, '_run_.sh'), 'w') as fid:

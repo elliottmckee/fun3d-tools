@@ -40,7 +40,7 @@ def format_list(values):
         return ", ".join(str(x) for x in values)
 
     else:
-        raise Exception('Issue with list. Check for incorrect/inconsistent types?')
+        raise Exception('Issue with list of values specified. Check for incorrect/inconsistent types?')
 
 format_dict_write = { # Format specification for each of the possible types
     bool:   format_bool,
