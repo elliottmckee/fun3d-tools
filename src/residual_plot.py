@@ -99,7 +99,7 @@ if __name__ == '__main__':
 
 
     # plot single result
-    residual_plot('/home/emckee/projects/fun3d/meatrocket_r3/T0.699_M0.634/A0.000_B0.000/meat_rocket_hist.dat')
+    # residual_plot('/home/emckee/projects/fun3d/meatrocket_r3/T0.699_M0.634/A0.000_B0.000/meat_rocket_hist.dat')
   
 
     # plot directory of results
