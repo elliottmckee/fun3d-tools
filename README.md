@@ -65,7 +65,7 @@ nml_write(nml_dict, 'fun3d_rendered.nml')
 
 
 ## input types reference
-| input type  | .nml example | fun3d-tools type |
+| input type  | .nml example | fun3d-tools (python) type |
 | ------------- | ------------- | ------------- |
 | string  | ```project_rootname = 'AIM9X_SIDEWINDER'```  | ```<class 'str'>``` |
 | scalar  | ```area_reference = 1.00```                  | ```<class 'float'>```<br>```<class 'int'>```<br>```...``` |
