@@ -9,6 +9,8 @@ the tools here aim to be a bedrock to build such complex tools using a simple, m
 # disclaimer
 this is a WIP, as I am building up functionality incrementally, as needed, during my own CFD excursions.
 
+---
+
 # functionality
 
 ## nml I/O
@@ -19,6 +21,10 @@ _FUN3D nml files are effectively just nested dictionaries, lets treat them as su
 Whatever you have to do between those two points is up to you.
 
 I primarily use this to read in a "template" .nml file, and just modify the bits as needed. You could also make fun3d .nml's from scratch using this, but this seems circuitous.
+
+### examples
+- [example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py)
+- [example_advanced.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_advanced.py)
 
 ### demo ([example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py))
 ```python
@@ -37,7 +43,7 @@ print(json.dumps(nml_dict, indent=4))
 nml_write(nml_dict, 'fun3d_rendered.nml')
 ```
 
-**output:**
+_**output:**_
 ```
 {
     "project": {
@@ -58,13 +64,11 @@ nml_write(nml_dict, 'fun3d_rendered.nml')
 ...
 ```
 
-
-### additional examples
-- [example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py)
-- [example_advanced.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_advanced.py)
+## residual plotting
+[residual_plot.py]([https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/residual_plot.py)) simply plots all the residuals available, given a FUN3D case .dat file.
 
 
-## input types reference
+# input types reference
 | input type  | .nml example | fun3d-tools (python) type |
 | ------------- | ------------- | ------------- |
 | string  | ```project_rootname = 'AIM9X_SIDEWINDER'```  | ```<class 'str'>``` |
@@ -83,6 +87,5 @@ nml_write(nml_dict, 'fun3d_rendered.nml')
 
 
 
-## residual plotting
-[residual_plot.py]([https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/residual_plot.py)) simply plots all the residuals available, given a FUN3D case .dat file.
+
 
