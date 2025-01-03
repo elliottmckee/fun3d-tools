@@ -1,23 +1,24 @@
 # fun3d-tools
-Pythonic interface for interacting with the NASA FUN3D CFD solver.
+pythonic interface for interacting with the NASA FUN3D CFD solver.
 
 # motivation
-In my professional career, every set of tools I have used for interacting with FUN3D have been far too overcomplicated, bloated, and chock-full of workflow-specific assumptions that break if you have to off-road at all.
+every toolchain I have used previously for interacting with FUN3D has been overcomplicated, bloated, and chock-full of workflow-specific assumptions that break if you have to off-road at all.
 
-All the tools here aim to be simple, minimal, general, and straightforward. 
+the tools here aim to be a bedrock to build such complex tools using a simple, minimal, general, and straightforward interface for working with fun3d files.
+
+# disclaimer
+this is a WIP, as I am building up functionality incrementally, as needed, during my own CFD excursions.
 
 # functionality
 
 ## nml I/O
-FUN3D nml files are effectively just nested dictionaries, lets treat them as such.
+_FUN3D nml files are effectively just nested dictionaries, lets treat them as such._
+- nml_read() allows you to read a .nml file to this dict format
+- nml_write() allows you to write this dict format to a .nml file
 
-This allows you to very simply read in "template" .nml files and write out modified/"rendered" .nml files. Whatever you have to do between those two points is up to you.
+Whatever you have to do between those two points is up to you.
 
-You can also make fun3d .nml's from scratch using this, but this seems circuitous. 
-
-### examples
-- [example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py)
-- [example_advanced.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_advanced.py)
+I primarily use this to read in a "template" .nml file, and just modify the bits as needed. You could also make fun3d .nml's from scratch using this, but this seems circuitous.
 
 ### demo ([example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py))
 ```python
@@ -36,6 +37,7 @@ print(json.dumps(nml_dict, indent=4))
 nml_write(nml_dict, 'fun3d_rendered.nml')
 ```
 
+**output:**
 ```
 {
     "project": {
@@ -55,6 +57,27 @@ nml_write(nml_dict, 'fun3d_rendered.nml')
     },
 ...
 ```
+
+
+### additional examples
+- [example_simple.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_simple.py)
+- [example_advanced.py](https://github.com/elliottmckee/fun3d-tools/blob/main/example_advanced.py)
+
+
+## input types reference
+| input type  | .nml example | fun3d-tools type |
+| ------------- | ------------- | ------------- |
+| string  | ```project_rootname = 'AIM9X_SIDEWINDER'```  | ```<class 'str'>``` |
+| scalar  | ```area_reference = 1.00```                  | ```<class 'float'>```<br>```<class 'int'>```<br>```...``` |
+| array-explicit  | ```schedule_cfl(1:2) = 0.1, 5.0```  | ```<class 'list'> of length n``` |
+| array-implicit-assign-all  | ```wall_temperature(:) = 1.05```<br>```wall_temp_flag(:) = .true.```  | ```<class 'list'> of length 1``` |
+
+
+
+
+
+
+
 
 
 
